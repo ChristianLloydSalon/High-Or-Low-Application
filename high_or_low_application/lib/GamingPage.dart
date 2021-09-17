@@ -21,17 +21,11 @@ class _GamingPageState extends State<GamingPage> {
     return Scaffold(
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          return OrientationBuilder(
-            builder: (context, orientation) {
-              bool isPortrait = orientation == Orientation.portrait;
-
-              if (constraints.maxWidth > 600 || !isPortrait) {
-                return _WebLayout();
-              } else {
-                return _MobileLayout();
-              }
-            },
-          );
+          if (constraints.maxWidth > 600) {
+            return _WebLayout();
+          } else {
+            return _MobileLayout();
+          }
         },
       ),
     );
